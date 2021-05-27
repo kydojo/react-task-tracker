@@ -1,6 +1,6 @@
+import {useState, useEffect} from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
-import {useState} from 'react'
 import AddTask from './components/AddTask'
 
 
@@ -14,6 +14,15 @@ const App = () => {
 
   // Control visibility of Add Task form - defaults to false (not visible)
   const [showAddTask, setShowAddTask] = useState(false)
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const res = await fetch('http://localhost:5000/tasks')
+      const data = await res.json()
+      console.log(data)
+    }
+    fetchTasks()
+  }, [])
 
   // Add Task
   const addTask = (task) => {
