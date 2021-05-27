@@ -31,9 +31,12 @@ const App = () => {
     }
   ])
 
+  // Control visibility of Add Task form - defaults to false (not visible)
+  const [showAddTask, setShowAddTask] = useState(false)
+
   // Add Task
   const addTask = (task) => {
-    //generate random task id
+    // generate random task id
     const id = Math.floor(Math.random() * 10000) + 1;
     const newTask = {id, ...task}
     setTasks([...tasks, newTask])
@@ -41,23 +44,23 @@ const App = () => {
 
   // Delete Task
   const deleteTask = (id) => {
-    //filter the array to simulate deleting tasks (no backend)
+    // filter the array to simulate deleting tasks (no backend)
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
   // Toggle Reminder
   const toggleReminder = (id) => {
-    //iterate over tasks and only toggle the specified task (by id)
+    // iterate over tasks and only toggle the specified task (by id)
     setTasks(tasks.map((task) => task.id === id
               ? {...task, reminder: !task.reminder}
               : task))
   }
 
-
+  // && is shorthand for ternary operator with no else needed
   return (
     <div className="container">
-      <Header/>
-      <AddTask onAdd={addTask}/>
+      <Header onAdd={() => setShowAddTask(!showAddTask)}/>
+      {showAddTask && <AddTask onAdd={addTask}/>}
       { tasks.length > 0
         ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
         : 'No Tasks To Show'
