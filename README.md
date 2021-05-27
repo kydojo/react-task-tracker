@@ -1,1 +1,2 @@
-Simple React Task Tracker
+Simple React Task Tracker demo
+Front-end only
