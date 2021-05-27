@@ -10,26 +10,7 @@ const App = () => {
   // something like Redux can be used to manage state
   // state is immutable, so you can't just push new tasks here into the array
   // you can use setTasks to recreate the array with new (or less) data
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: 'Doctor\'s Appointment',
-      day: 'Feb 5th at 2:30pm',
-      reminder: true,
-    },
-    {
-      id: 2,
-      text: 'Meeting at School',
-      day: 'Feb 6th at 1:30pm',
-      reminder: true,
-    },
-    {
-      id: 3,
-      text: 'Food Shopping',
-      day: 'Feb 5th at 2:30pm',
-      reminder: false,
-    }
-  ])
+  const [tasks, setTasks] = useState([])
 
   // Control visibility of Add Task form - defaults to false (not visible)
   const [showAddTask, setShowAddTask] = useState(false)
