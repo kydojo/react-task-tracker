@@ -38,7 +38,12 @@ const App = () => {
   }
 
   // Delete Task
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => {
+    await fetch(`http://localhost:5000/tasks/${id}`,
+                {
+                  method: 'DELETE'
+                })
+                
     // filter the array to simulate deleting tasks (no backend)
     setTasks(tasks.filter((task) => task.id !== id))
   }
